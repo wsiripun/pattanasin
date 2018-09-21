@@ -138,8 +138,19 @@ keyAlias="wsKey1" sslProtocol="TLS"/>
              resources under the key "UserDatabase".  Any edits
              that are performed against this UserDatabase are immediately
              available for use by the Realm.  -->
+        <!--  WS_0 
         <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+        WS_0_END -->
       </Realm>
+      
+	<!-- WS Start 1: add JDBC Realm below -->
+      <Realm  className="org.apache.catalina.realm.JDBCRealm"
+             driverName="com.mysql.jdbc.Driver"
+          connectionURL="jdbc:mysql://localhost:3306/db_pattanasin"
+         connectionName="dbuser" connectionPassword="dbpassword"
+              userTable="tomcat_users" userNameCol="user_name" userCredCol="password"
+          userRoleTable="tomcat_users_roles" roleNameCol="role_name" />	
+	<!-- WS End 1: add JDBC Realm below -->      
 
       <Host appBase="webapps" autoDeploy="true" name="localhost" unpackWARs="true">
 

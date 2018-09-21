@@ -1,35 +1,28 @@
 package com.erp.pattanasin.db.model;
 
 public class Employee {
-	//private static final long serialVersionUID = 1L;
-	private int employeeID;
-	private String displayName =  null;
-	private boolean	active = true;
+	private static final long serialVersionUID = 1L;
+	
+	private String loginID = null;
+	private String salt = null;
 	private String password =  null;
-	private String userRole =  null;		// Either "Manager" or "Cashier"  Manager can change price. Cashier cannot.
+	private boolean	active = true;
 	private String firstName =  null;
 	private String lastName =  null;
 	private String email =  null;
 	private String phoneNumber =  null;
 	
-	
-	public int getEmployeeID() {
-		return employeeID;
+	public String getLoginID() {
+		return loginID;
 	}
-	public void setEmployeeID(int employeeID) {
-		this.employeeID = employeeID;
+	public void setLoginID(String loginID) {
+		this.loginID = loginID;
 	}
-	public String getDisplayName() {
-		return displayName;
+	public String getSalt() {
+		return salt;
 	}
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
-	}
-	public boolean isActive() {
-		return active;
-	}
-	public void setActive(boolean active) {
-		this.active = active;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 	public String getPassword() {
 		return password;
@@ -37,11 +30,11 @@ public class Employee {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getUserRole() {
-		return userRole;
+	public boolean isActive() {
+		return active;
 	}
-	public void setUserRole(String userRole) {
-		this.userRole = userRole;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -67,5 +60,19 @@ public class Employee {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-		
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	@Override
+	public String toString() {
+		return "Employee [loginID=" + loginID + ", salt=" + salt + ", password=" + password + ", active=" + active
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + "]";
+	}
+
+	
+
 }
+
+
+

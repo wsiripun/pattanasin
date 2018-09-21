@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login Demo</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script 
+	src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<h1>DEMO FOUR SCENARIO: 1. CREATE A NEW USER, 2. CHANGE PASSWORD, 3. LOG IN, 4. LOG OUT</h1>
+		<br>
+		<form  method="POST" action="loginmgr/create">
+			<table>
+				<tr>
+					<td colspan="2"><h4>Create a New User:</td> 
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="loginID" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password"/ ></td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><input type="submit" value="CREATE A NEW USER" /></td>
+				</tr>				
+			</table>		
+		
+		
+		</form>
+		<div>
+			<table>
+				<tr>
+					<td colspan="2"><h4>Create a New User  #2:</td> 
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="loginID" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password"/ ></td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><input type="button" onclick="submitNewUser2()" value="CREATE A NEW USER" /></td>
+				</tr>				
+			</table>		
+		
+		
+		</div>
+
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+		<h1>LOGGGING IN</h1>
+		<br>
+		<form method="POST" action="j_security_check">
+			<table>
+				<tr>
+					<td colspan="2">Login to the Tomcat-Demo application 111:</td>
+				</tr>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="j_username" /></td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="j_password"/ ></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Go" /></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div>
+		<h1>LOGGING OUT</h1>
+	</div>
+	
+	<script>
+		function submitNewUser() {
+
+			
+			$.post("/pattanasin/loginmgr/create",
+			        {
+						loginID: "johndoe",
+						password: "johnPW",
+
+			        },
+			        function(data,status){
+			            alert("RESULT: returnMessage=" + data.returnMessage + "   \nreturnCode=" + data.resultCode);
+			         });			
+		}
+		
+		function submitNewUser2() {
+			$.ajax({
+			    type: 'POST',
+			    url: '/pattanasin/loginmgr/create',
+			    contentType: 'application/x-www-form-urlencoded',
+			    data: { loginID: "johnDoe2", password: "johnPW2" },
+			    dataType: 'json',
+			    success:  function(data,status){
+			    	alert("RESULT_2:  returnMessage=" + data.returnMessage + "   \nreturnCode=" + data.resultCode);
+		        }
+
+			}); 			
+			
+			
+			
+		}
+	
+	</script>
+
+</body>
+</html>
